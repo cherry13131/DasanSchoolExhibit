@@ -204,7 +204,7 @@
             line-height: 1.6;
         }
 
-        /* 발자국 컨테이너 세팅 */
+        /* 발자국 컨테이너 세팅 (이미지 기반) */
         #footprint-trail {
             position: absolute;
             top: 0;
@@ -216,19 +216,20 @@
             overflow: hidden;
         }
 
-        .footprint-svg {
+        .footprint-img {
             position: absolute;
-            width: 42px;
+            width: 28px; /* 모바일 화면에 적당한 신발 크기 */
             height: auto;
-            fill: #52B774;
             opacity: 0;
-            transform: rotate(var(--heading)) scale(1);
+            /* 테마 색상인 #52B774와 유사한 초록색 톤으로 이미지를 변경하는 CSS 필터 */
+            filter: invert(64%) sepia(21%) saturate(995%) hue-rotate(88deg) brightness(92%) contrast(84%);
+            transform: rotate(var(--heading));
             transition: opacity 0.8s ease;
             transform-origin: center center;
         }
 
-        .footprint-svg.active-glow {
-            opacity: 0.28;
+        .footprint-img.active-glow {
+            opacity: 0.4; /* 이미지가 선명히 보이도록 투명도 설정 */
         }
         
         /* [구간 1: 왼쪽으로 크게 구불] */
@@ -272,86 +273,26 @@
     </nav>
 
     <div id="footprint-trail">
-        <svg class="footprint-svg fp-1" viewBox="0 0 90 180">
-            <ellipse cx="25" cy="28" rx="10" ry="14" transform="rotate(-15 25 28)"/><ellipse cx="46" cy="20" rx="7" ry="10" transform="rotate(-5 46 20)"/><ellipse cx="63" cy="24" rx="6" ry="8" transform="rotate(5 63 24)"/><ellipse cx="76" cy="34" rx="5" ry="7" transform="rotate(15 76 34)"/><ellipse cx="84" cy="46" rx="4" ry="6" transform="rotate(25 84 46)"/>
-            <path d="M 25,54 C 15,64 15,84 25,94 C 40,109 40,134 30,154 C 25,169 40,184 55,179 C 70,174 80,144 75,124 C 70,104 85,74 70,54 C 55,34 35,39 25,54 Z"/>
-        </svg>
-        <svg class="footprint-svg fp-2" viewBox="0 0 90 180">
-            <ellipse cx="65" cy="28" rx="10" ry="14" transform="rotate(15 65 28)"/><ellipse cx="44" cy="20" rx="7" ry="10" transform="rotate(5 44 20)"/><ellipse cx="27" cy="24" rx="6" ry="8" transform="rotate(-5 27 24)"/><ellipse cx="14" cy="34" rx="5" ry="7" transform="rotate(-15 14 34)"/><ellipse cx="6" cy="46" rx="4" ry="6" transform="rotate(-25 6 46)"/>
-            <path d="M 65,54 C 75,64 75,84 65,94 C 50,109 50,134 60,154 C 65,169 50,184 35,179 C 20,174 10,144 15,124 C 20,104 5,74 20,54 C 35,34 55,39 65,54 Z"/>
-        </svg>
-        <svg class="footprint-svg fp-3" viewBox="0 0 90 180">
-            <ellipse cx="25" cy="28" rx="10" ry="14" transform="rotate(-15 25 28)"/><ellipse cx="46" cy="20" rx="7" ry="10" transform="rotate(-5 46 20)"/><ellipse cx="63" cy="24" rx="6" ry="8" transform="rotate(5 63 24)"/><ellipse cx="76" cy="34" rx="5" ry="7" transform="rotate(15 76 34)"/><ellipse cx="84" cy="46" rx="4" ry="6" transform="rotate(25 84 46)"/>
-            <path d="M 25,54 C 15,64 15,84 25,94 C 40,109 40,134 30,154 C 25,169 40,184 55,179 C 70,174 80,144 75,124 C 70,104 85,74 70,54 C 55,34 35,39 25,54 Z"/>
-        </svg>
-        <svg class="footprint-svg fp-4" viewBox="0 0 90 180">
-            <ellipse cx="65" cy="28" rx="10" ry="14" transform="rotate(15 65 28)"/><ellipse cx="44" cy="20" rx="7" ry="10" transform="rotate(5 44 20)"/><ellipse cx="27" cy="24" rx="6" ry="8" transform="rotate(-5 27 24)"/><ellipse cx="14" cy="34" rx="5" ry="7" transform="rotate(-15 14 34)"/><ellipse cx="6" cy="46" rx="4" ry="6" transform="rotate(-25 6 46)"/>
-            <path d="M 65,54 C 75,64 75,84 65,94 C 50,109 50,134 60,154 C 65,169 50,184 35,179 C 20,174 10,144 15,124 C 20,104 5,74 20,54 C 35,34 55,39 65,54 Z"/>
-        </svg>
-        <svg class="footprint-svg fp-5" viewBox="0 0 90 180">
-            <ellipse cx="25" cy="28" rx="10" ry="14" transform="rotate(-15 25 28)"/><ellipse cx="46" cy="20" rx="7" ry="10" transform="rotate(-5 46 20)"/><ellipse cx="63" cy="24" rx="6" ry="8" transform="rotate(5 63 24)"/><ellipse cx="76" cy="34" rx="5" ry="7" transform="rotate(15 76 34)"/><ellipse cx="84" cy="46" rx="4" ry="6" transform="rotate(25 84 46)"/>
-            <path d="M 25,54 C 15,64 15,84 25,94 C 40,109 40,134 30,154 C 25,169 40,184 55,179 C 70,174 80,144 75,124 C 70,104 85,74 70,54 C 55,34 35,39 25,54 Z"/>
-        </svg>
-        <svg class="footprint-svg fp-6" viewBox="0 0 90 180">
-            <ellipse cx="65" cy="28" rx="10" ry="14" transform="rotate(15 65 28)"/><ellipse cx="44" cy="20" rx="7" ry="10" transform="rotate(5 44 20)"/><ellipse cx="27" cy="24" rx="6" ry="8" transform="rotate(-5 27 24)"/><ellipse cx="14" cy="34" rx="5" ry="7" transform="rotate(-15 14 34)"/><ellipse cx="6" cy="46" rx="4" ry="6" transform="rotate(-25 6 46)"/>
-            <path d="M 65,54 C 75,64 75,84 65,94 C 50,109 50,134 60,154 C 65,169 50,184 35,179 C 20,174 10,144 15,124 C 20,104 5,74 20,54 C 35,34 55,39 65,54 Z"/>
-        </svg>
-        <svg class="footprint-svg fp-7" viewBox="0 0 90 180">
-            <ellipse cx="25" cy="28" rx="10" ry="14" transform="rotate(-15 25 28)"/><ellipse cx="46" cy="20" rx="7" ry="10" transform="rotate(-5 46 20)"/><ellipse cx="63" cy="24" rx="6" ry="8" transform="rotate(5 63 24)"/><ellipse cx="76" cy="34" rx="5" ry="7" transform="rotate(15 76 34)"/><ellipse cx="84" cy="46" rx="4" ry="6" transform="rotate(25 84 46)"/>
-            <path d="M 25,54 C 15,64 15,84 25,94 C 40,109 40,134 30,154 C 25,169 40,184 55,179 C 70,174 80,144 75,124 C 70,104 85,74 70,54 C 55,34 35,39 25,54 Z"/>
-        </svg>
-        <svg class="footprint-svg fp-8" viewBox="0 0 90 180">
-            <ellipse cx="65" cy="28" rx="10" ry="14" transform="rotate(15 65 28)"/><ellipse cx="44" cy="20" rx="7" ry="10" transform="rotate(5 44 20)"/><ellipse cx="27" cy="24" rx="6" ry="8" transform="rotate(-5 27 24)"/><ellipse cx="14" cy="34" rx="5" ry="7" transform="rotate(-15 14 34)"/><ellipse cx="6" cy="46" rx="4" ry="6" transform="rotate(-25 6 46)"/>
-            <path d="M 65,54 C 75,64 75,84 65,94 C 50,109 50,134 60,154 C 65,169 50,184 35,179 C 20,174 10,144 15,124 C 20,104 5,74 20,54 C 35,34 55,39 65,54 Z"/>
-        </svg>
-        <svg class="footprint-svg fp-9" viewBox="0 0 90 180">
-            <ellipse cx="25" cy="28" rx="10" ry="14" transform="rotate(-15 25 28)"/><ellipse cx="46" cy="20" rx="7" ry="10" transform="rotate(-5 46 20)"/><ellipse cx="63" cy="24" rx="6" ry="8" transform="rotate(5 63 24)"/><ellipse cx="76" cy="34" rx="5" ry="7" transform="rotate(15 76 34)"/><ellipse cx="84" cy="46" rx="4" ry="6" transform="rotate(25 84 46)"/>
-            <path d="M 25,54 C 15,64 15,84 25,94 C 40,109 40,134 30,154 C 25,169 40,184 55,179 C 70,174 80,144 75,124 C 70,104 85,74 70,54 C 55,34 35,39 25,54 Z"/>
-        </svg>
-        <svg class="footprint-svg fp-10" viewBox="0 0 90 180">
-            <ellipse cx="65" cy="28" rx="10" ry="14" transform="rotate(15 65 28)"/><ellipse cx="44" cy="20" rx="7" ry="10" transform="rotate(5 44 20)"/><ellipse cx="27" cy="24" rx="6" ry="8" transform="rotate(-5 27 24)"/><ellipse cx="14" cy="34" rx="5" ry="7" transform="rotate(-15 14 34)"/><ellipse cx="6" cy="46" rx="4" ry="6" transform="rotate(-25 6 46)"/>
-            <path d="M 65,54 C 75,64 75,84 65,94 C 50,109 50,134 60,154 C 65,169 50,184 35,179 C 20,174 10,144 15,124 C 20,104 5,74 20,54 C 35,34 55,39 65,54 Z"/>
-        </svg>
-        <svg class="footprint-svg fp-11" viewBox="0 0 90 180">
-            <ellipse cx="25" cy="28" rx="10" ry="14" transform="rotate(-15 25 28)"/><ellipse cx="46" cy="20" rx="7" ry="10" transform="rotate(-5 46 20)"/><ellipse cx="63" cy="24" rx="6" ry="8" transform="rotate(5 63 24)"/><ellipse cx="76" cy="34" rx="5" ry="7" transform="rotate(15 76 34)"/><ellipse cx="84" cy="46" rx="4" ry="6" transform="rotate(25 84 46)"/>
-            <path d="M 25,54 C 15,64 15,84 25,94 C 40,109 40,134 30,154 C 25,169 40,184 55,179 C 70,174 80,144 75,124 C 70,104 85,74 70,54 C 55,34 35,39 25,54 Z"/>
-        </svg>
-        <svg class="footprint-svg fp-12" viewBox="0 0 90 180">
-            <ellipse cx="65" cy="28" rx="10" ry="14" transform="rotate(15 65 28)"/><ellipse cx="44" cy="20" rx="7" ry="10" transform="rotate(5 44 20)"/><ellipse cx="27" cy="24" rx="6" ry="8" transform="rotate(-5 27 24)"/><ellipse cx="14" cy="34" rx="5" ry="7" transform="rotate(-15 14 34)"/><ellipse cx="6" cy="46" rx="4" ry="6" transform="rotate(-25 6 46)"/>
-            <path d="M 65,54 C 75,64 75,84 65,94 C 50,109 50,134 60,154 C 65,169 50,184 35,179 C 20,174 10,144 15,124 C 20,104 5,74 20,54 C 35,34 55,39 65,54 Z"/>
-        </svg>
-        <svg class="footprint-svg fp-13" viewBox="0 0 90 180">
-            <ellipse cx="25" cy="28" rx="10" ry="14" transform="rotate(-15 25 28)"/><ellipse cx="46" cy="20" rx="7" ry="10" transform="rotate(-5 46 20)"/><ellipse cx="63" cy="24" rx="6" ry="8" transform="rotate(5 63 24)"/><ellipse cx="76" cy="34" rx="5" ry="7" transform="rotate(15 76 34)"/><ellipse cx="84" cy="46" rx="4" ry="6" transform="rotate(25 84 46)"/>
-            <path d="M 25,54 C 15,64 15,84 25,94 C 40,109 40,134 30,154 C 25,169 40,184 55,179 C 70,174 80,144 75,124 C 70,104 85,74 70,54 C 55,34 35,39 25,54 Z"/>
-        </svg>
-        <svg class="footprint-svg fp-14" viewBox="0 0 90 180">
-            <ellipse cx="65" cy="28" rx="10" ry="14" transform="rotate(15 65 28)"/><ellipse cx="44" cy="20" rx="7" ry="10" transform="rotate(5 44 20)"/><ellipse cx="27" cy="24" rx="6" ry="8" transform="rotate(-5 27 24)"/><ellipse cx="14" cy="34" rx="5" ry="7" transform="rotate(-15 14 34)"/><ellipse cx="6" cy="46" rx="4" ry="6" transform="rotate(-25 6 46)"/>
-            <path d="M 65,54 C 75,64 75,84 65,94 C 50,109 50,134 60,154 C 65,169 50,184 35,179 C 20,174 10,144 15,124 C 20,104 5,74 20,54 C 35,34 55,39 65,54 Z"/>
-        </svg>
-        <svg class="footprint-svg fp-15" viewBox="0 0 90 180">
-            <ellipse cx="25" cy="28" rx="10" ry="14" transform="rotate(-15 25 28)"/><ellipse cx="46" cy="20" rx="7" ry="10" transform="rotate(-5 46 20)"/><ellipse cx="63" cy="24" rx="6" ry="8" transform="rotate(5 63 24)"/><ellipse cx="76" cy="34" rx="5" ry="7" transform="rotate(15 76 34)"/><ellipse cx="84" cy="46" rx="4" ry="6" transform="rotate(25 84 46)"/>
-            <path d="M 25,54 C 15,64 15,84 25,94 C 40,109 40,134 30,154 C 25,169 40,184 55,179 C 70,174 80,144 75,124 C 70,104 85,74 70,54 C 55,34 35,39 25,54 Z"/>
-        </svg>
-        <svg class="footprint-svg fp-16" viewBox="0 0 90 180">
-            <ellipse cx="65" cy="28" rx="10" ry="14" transform="rotate(15 65 28)"/><ellipse cx="44" cy="20" rx="7" ry="10" transform="rotate(5 44 20)"/><ellipse cx="27" cy="24" rx="6" ry="8" transform="rotate(-5 27 24)"/><ellipse cx="14" cy="34" rx="5" ry="7" transform="rotate(-15 14 34)"/><ellipse cx="6" cy="46" rx="4" ry="6" transform="rotate(-25 6 46)"/>
-            <path d="M 65,54 C 75,64 75,84 65,94 C 50,109 50,134 60,154 C 65,169 50,184 35,179 C 20,174 10,144 15,124 C 20,104 5,74 20,54 C 35,34 55,39 65,54 Z"/>
-        </svg>
-        <svg class="footprint-svg fp-17" viewBox="0 0 90 180">
-            <ellipse cx="25" cy="28" rx="10" ry="14" transform="rotate(-15 25 28)"/><ellipse cx="46" cy="20" rx="7" ry="10" transform="rotate(-5 46 20)"/><ellipse cx="63" cy="24" rx="6" ry="8" transform="rotate(5 63 24)"/><ellipse cx="76" cy="34" rx="5" ry="7" transform="rotate(15 76 34)"/><ellipse cx="84" cy="46" rx="4" ry="6" transform="rotate(25 84 46)"/>
-            <path d="M 25,54 C 15,64 15,84 25,94 C 40,109 40,134 30,154 C 25,169 40,184 55,179 C 70,174 80,144 75,124 C 70,104 85,74 70,54 C 55,34 35,39 25,54 Z"/>
-        </svg>
-        <svg class="footprint-svg fp-18" viewBox="0 0 90 180">
-            <ellipse cx="65" cy="28" rx="10" ry="14" transform="rotate(15 65 28)"/><ellipse cx="44" cy="20" rx="7" ry="10" transform="rotate(5 44 20)"/><ellipse cx="27" cy="24" rx="6" ry="8" transform="rotate(-5 27 24)"/><ellipse cx="14" cy="34" rx="5" ry="7" transform="rotate(-15 14 34)"/><ellipse cx="6" cy="46" rx="4" ry="6" transform="rotate(-25 6 46)"/>
-            <path d="M 65,54 C 75,64 75,84 65,94 C 50,109 50,134 60,154 C 65,169 50,184 35,179 C 20,174 10,144 15,124 C 20,104 5,74 20,54 C 35,34 55,39 65,54 Z"/>
-        </svg>
-        <svg class="footprint-svg fp-19" viewBox="0 0 90 180">
-            <ellipse cx="25" cy="28" rx="10" ry="14" transform="rotate(-15 25 28)"/><ellipse cx="46" cy="20" rx="7" ry="10" transform="rotate(-5 46 20)"/><ellipse cx="63" cy="24" rx="6" ry="8" transform="rotate(5 63 24)"/><ellipse cx="76" cy="34" rx="5" ry="7" transform="rotate(15 76 34)"/><ellipse cx="84" cy="46" rx="4" ry="6" transform="rotate(25 84 46)"/>
-            <path d="M 25,54 C 15,64 15,84 25,94 C 40,109 40,134 30,154 C 25,169 40,184 55,179 C 70,174 80,144 75,124 C 70,104 85,74 70,54 C 55,34 35,39 25,54 Z"/>
-        </svg>
-        <svg class="footprint-svg fp-20" viewBox="0 0 90 180">
-            <ellipse cx="65" cy="28" rx="10" ry="14" transform="rotate(15 65 28)"/><ellipse cx="44" cy="20" rx="7" ry="10" transform="rotate(5 44 20)"/><ellipse cx="27" cy="24" rx="6" ry="8" transform="rotate(-5 27 24)"/><ellipse cx="14" cy="34" rx="5" ry="7" transform="rotate(-15 14 34)"/><ellipse cx="6" cy="46" rx="4" ry="6" transform="rotate(-25 6 46)"/>
-            <path d="M 65,54 C 75,64 75,84 65,94 C 50,109 50,134 60,154 C 65,169 50,184 35,179 C 20,174 10,144 15,124 C 20,104 5,74 20,54 C 35,34 55,39 65,54 Z"/>
-        </svg>
+        <img class="footprint-img fp-1" src="https://img.icons8.com/ios-filled/100/ffffff/left-shoe-print.png" alt="발자국">
+        <img class="footprint-img fp-2" src="https://img.icons8.com/ios-filled/100/ffffff/right-shoe-print.png" alt="발자국">
+        <img class="footprint-img fp-3" src="https://img.icons8.com/ios-filled/100/ffffff/left-shoe-print.png" alt="발자국">
+        <img class="footprint-img fp-4" src="https://img.icons8.com/ios-filled/100/ffffff/right-shoe-print.png" alt="발자국">
+        <img class="footprint-img fp-5" src="https://img.icons8.com/ios-filled/100/ffffff/left-shoe-print.png" alt="발자국">
+        <img class="footprint-img fp-6" src="https://img.icons8.com/ios-filled/100/ffffff/right-shoe-print.png" alt="발자국">
+        <img class="footprint-img fp-7" src="https://img.icons8.com/ios-filled/100/ffffff/left-shoe-print.png" alt="발자국">
+        <img class="footprint-img fp-8" src="https://img.icons8.com/ios-filled/100/ffffff/right-shoe-print.png" alt="발자국">
+        <img class="footprint-img fp-9" src="https://img.icons8.com/ios-filled/100/ffffff/left-shoe-print.png" alt="발자국">
+        <img class="footprint-img fp-10" src="https://img.icons8.com/ios-filled/100/ffffff/right-shoe-print.png" alt="발자국">
+        <img class="footprint-img fp-11" src="https://img.icons8.com/ios-filled/100/ffffff/left-shoe-print.png" alt="발자국">
+        <img class="footprint-img fp-12" src="https://img.icons8.com/ios-filled/100/ffffff/right-shoe-print.png" alt="발자국">
+        <img class="footprint-img fp-13" src="https://img.icons8.com/ios-filled/100/ffffff/left-shoe-print.png" alt="발자국">
+        <img class="footprint-img fp-14" src="https://img.icons8.com/ios-filled/100/ffffff/right-shoe-print.png" alt="발자국">
+        <img class="footprint-img fp-15" src="https://img.icons8.com/ios-filled/100/ffffff/left-shoe-print.png" alt="발자국">
+        <img class="footprint-img fp-16" src="https://img.icons8.com/ios-filled/100/ffffff/right-shoe-print.png" alt="발자국">
+        <img class="footprint-img fp-17" src="https://img.icons8.com/ios-filled/100/ffffff/left-shoe-print.png" alt="발자국">
+        <img class="footprint-img fp-18" src="https://img.icons8.com/ios-filled/100/ffffff/right-shoe-print.png" alt="발자국">
+        <img class="footprint-img fp-19" src="https://img.icons8.com/ios-filled/100/ffffff/left-shoe-print.png" alt="발자국">
+        <img class="footprint-img fp-20" src="https://img.icons8.com/ios-filled/100/ffffff/right-shoe-print.png" alt="발자국">
     </div>
 
     <section id="home" class="hero">
@@ -432,7 +373,8 @@
         });
     }, observerOptions);
 
-    document.querySelectorAll('.footprint-svg').forEach(fp => {
+    // 대상을 .footprint-img로 변경
+    document.querySelectorAll('.footprint-img').forEach(fp => {
         footprintObserver.observe(fp);
     });
 
