@@ -218,49 +218,46 @@
 
         .footprint-svg {
             position: absolute;
-            width: 45px;
-            height: 90px;
-            fill: #52B774; 
-            opacity: 0; 
-            /* 기본 방향을 180도 회전 시켜 아래를 보게 만든 후 각도 추가 연산 */
-            transform: rotate(calc(180deg + var(--heading))) scale(0.9);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out; 
+            width: 42px;
+            height: auto;
+            fill: #52B774;
+            opacity: 0;
+            transform: rotate(var(--heading)) scale(1);
+            transition: opacity 0.8s ease;
+            transform-origin: center center;
         }
 
         .footprint-svg.active-glow {
-            opacity: 0.35; 
-            transform: rotate(calc(180deg + var(--heading))) scale(1);
+            opacity: 0.28;
         }
-
-        /* 🛠️ 수정됨: 모든 발자국이 아래 방향(진행 방향의 앞쪽 대각선 하단)을 보며 전진하도록 각도 세팅 수정 완료 */
         
         /* [구간 1: 왼쪽으로 크게 구불] */
-        .fp-1  { top: 920px;  left: 32%; --heading: 25deg; } 
-        .fp-2  { top: 1080px; left: 33%; --heading: 25deg; } 
-        .fp-3  { top: 1200px; left: 24%; --heading: 5deg; }    
-        .fp-4  { top: 1400px; left: 28%; --heading: -10deg; }   
+        .fp-1  { top: 820px;  left: 32%; --heading: 25deg; } 
+        .fp-2  { top: 1000px; left: 30%; --heading: 25deg; } 
+        .fp-3  { top: 1200px; left: 25%; --heading: 5deg; }    
+        .fp-4  { top: 1390px; left: 28%; --heading: -10deg; }   
         .fp-5  { top: 1570px; left: 27%; --heading: -25deg; } 
 
         /* [구간 2: 오른쪽으로 작게 구불] */
-        .fp-6  { top: 1680px; left: 38%; --heading: -25deg; } 
-        .fp-7  { top: 1880px; left: 39%; --heading: -25deg; } 
-        .fp-8  { top: 1980px; left: 47%; --heading: -30deg; } 
+        .fp-6  { top: 1680px; left: 35%; --heading: -35deg; } 
+        .fp-7  { top: 1880px; left: 40%; --heading: -40deg; } 
+        .fp-8  { top: 1980px; left: 50%; --heading: -32deg; } 
 
         /* [구간 3: 우측으로 크게 구불] */
-        .fp-9  { top: 2200px; left: 48%; --heading: -35deg; }   
-        .fp-10 { top: 2260px; left: 58%; --heading: -20deg; } 
-        .fp-11 { top: 2450px; left: 57%; --heading: -5deg; }    
-        .fp-12 { top: 2680px; left: 59%; --heading:  15deg; }  
-        .fp-13 { top: 2800px; left: 50%; --heading: 25deg; } 
+        .fp-9  { top: 2150px; left: 52%; --heading: -30deg; }   
+        .fp-10 { top: 2260px; left: 60%; --heading: -20deg; } 
+        .fp-11 { top: 2450px; left: 58%; --heading:  -5deg; }    
+        .fp-12 { top: 2670px; left: 58%; --heading:  20deg; }  
+        .fp-13 { top: 2800px; left: 49%; --heading: 30deg; } 
 
         /* [구간 4: 마지막 좌측 큰 구불거림 후 정렬] */
-        .fp-14 { top: 2910px; left: 40%; --heading: 30deg; } 
-        .fp-15 { top: 3160px; left: 39%; --heading: 25deg; } 
-        .fp-16 { top: 3320px; left: 30%; --heading: 0deg; }   
-        .fp-17 { top: 3480px; left: 36%; --heading: -25deg; } 
-        .fp-18 { top: 3680px; left: 38%; --heading: -30deg; } 
-        .fp-19 { top: 3800px; left: 47%; --heading: -10deg; } 
-        .fp-20 { top: 3960px; left: 44%; --heading: 0deg; }
+        .fp-14 { top: 3000px; left: 45%; --heading: 25deg; } 
+        .fp-15 { top: 3130px; left: 36%; --heading: 10deg; } 
+        .fp-16 { top: 3320px; left: 39%; --heading: -8deg; }   
+        .fp-17 { top: 3520px; left: 38%; --heading: -25deg; } 
+        .fp-18 { top: 3680px; left: 45.2%; --heading: -30deg; } 
+        .fp-19 { top: 3840px; left: 45%; --heading: -20deg; } 
+        .fp-20 { top: 4000px; left: 49%; --heading: 0deg; }
     </style>
 </head>
 <body>
@@ -275,26 +272,86 @@
     </nav>
 
     <div id="footprint-trail">
-        <svg class="footprint-svg fp-1" viewBox="0 0 36 72"><path d="M 12,0 C 2,4 0,16 2,26 C 4,36 8,44 18,44 C 28,44 32,36 34,26 C 36,16 34,4 24,0 C 18,-1 15,-1 12,0 Z" /><path d="M 6,52 C 4,58 6,70 14,70 C 22,70 28,58 26,52 C 24,48 8,48 6,52 Z" /></svg>
-        <svg class="footprint-svg fp-2" viewBox="0 0 36 72"><path d="M 12,0 C 2,4 0,16 2,26 C 4,36 8,44 18,44 C 28,44 32,36 34,26 C 36,16 34,4 24,0 C 18,-1 15,-1 12,0 Z" /><path d="M 6,52 C 4,58 6,70 14,70 C 22,70 28,58 26,52 C 24,48 8,48 6,52 Z" /></svg>
-        <svg class="footprint-svg fp-3" viewBox="0 0 36 72"><path d="M 12,0 C 2,4 0,16 2,26 C 4,36 8,44 18,44 C 28,44 32,36 34,26 C 36,16 34,4 24,0 C 18,-1 15,-1 12,0 Z" /><path d="M 6,52 C 4,58 6,70 14,70 C 22,70 28,58 26,52 C 24,48 8,48 6,52 Z" /></svg>
-        <svg class="footprint-svg fp-4" viewBox="0 0 36 72"><path d="M 12,0 C 2,4 0,16 2,26 C 4,36 8,44 18,44 C 28,44 32,36 34,26 C 36,16 34,4 24,0 C 18,-1 15,-1 12,0 Z" /><path d="M 6,52 C 4,58 6,70 14,70 C 22,70 28,58 26,52 C 24,48 8,48 6,52 Z" /></svg>
-        <svg class="footprint-svg fp-5" viewBox="0 0 36 72"><path d="M 12,0 C 2,4 0,16 2,26 C 4,36 8,44 18,44 C 28,44 32,36 34,26 C 36,16 34,4 24,0 C 18,-1 15,-1 12,0 Z" /><path d="M 6,52 C 4,58 6,70 14,70 C 22,70 28,58 26,52 C 24,48 8,48 6,52 Z" /></svg>
-        <svg class="footprint-svg fp-6" viewBox="0 0 36 72"><path d="M 12,0 C 2,4 0,16 2,26 C 4,36 8,44 18,44 C 28,44 32,36 34,26 C 36,16 34,4 24,0 C 18,-1 15,-1 12,0 Z" /><path d="M 6,52 C 4,58 6,70 14,70 C 22,70 28,58 26,52 C 24,48 8,48 6,52 Z" /></svg>
-        <svg class="footprint-svg fp-7" viewBox="0 0 36 72"><path d="M 12,0 C 2,4 0,16 2,26 C 4,36 8,44 18,44 C 28,44 32,36 34,26 C 36,16 34,4 24,0 C 18,-1 15,-1 12,0 Z" /><path d="M 6,52 C 4,58 6,70 14,70 C 22,70 28,58 26,52 C 24,48 8,48 6,52 Z" /></svg>
-        <svg class="footprint-svg fp-8" viewBox="0 0 36 72"><path d="M 12,0 C 2,4 0,16 2,26 C 4,36 8,44 18,44 C 28,44 32,36 34,26 C 36,16 34,4 24,0 C 18,-1 15,-1 12,0 Z" /><path d="M 6,52 C 4,58 6,70 14,70 C 22,70 28,58 26,52 C 24,48 8,48 6,52 Z" /></svg>
-        <svg class="footprint-svg fp-9" viewBox="0 0 36 72"><path d="M 12,0 C 2,4 0,16 2,26 C 4,36 8,44 18,44 C 28,44 32,36 34,26 C 36,16 34,4 24,0 C 18,-1 15,-1 12,0 Z" /><path d="M 6,52 C 4,58 6,70 14,70 C 22,70 28,58 26,52 C 24,48 8,48 6,52 Z" /></svg>
-        <svg class="footprint-svg fp-10" viewBox="0 0 36 72"><path d="M 12,0 C 2,4 0,16 2,26 C 4,36 8,44 18,44 C 28,44 32,36 34,26 C 36,16 34,4 24,0 C 18,-1 15,-1 12,0 Z" /><path d="M 6,52 C 4,58 6,70 14,70 C 22,70 28,58 26,52 C 24,48 8,48 6,52 Z" /></svg>
-        <svg class="footprint-svg fp-11" viewBox="0 0 36 72"><path d="M 12,0 C 2,4 0,16 2,26 C 4,36 8,44 18,44 C 28,44 32,36 34,26 C 36,16 34,4 24,0 C 18,-1 15,-1 12,0 Z" /><path d="M 6,52 C 4,58 6,70 14,70 C 22,70 28,58 26,52 C 24,48 8,48 6,52 Z" /></svg>
-        <svg class="footprint-svg fp-12" viewBox="0 0 36 72"><path d="M 12,0 C 2,4 0,16 2,26 C 4,36 8,44 18,44 C 28,44 32,36 34,26 C 36,16 34,4 24,0 C 18,-1 15,-1 12,0 Z" /><path d="M 6,52 C 4,58 6,70 14,70 C 22,70 28,58 26,52 C 24,48 8,48 6,52 Z" /></svg>
-        <svg class="footprint-svg fp-13" viewBox="0 0 36 72"><path d="M 12,0 C 2,4 0,16 2,26 C 4,36 8,44 18,44 C 28,44 32,36 34,26 C 36,16 34,4 24,0 C 18,-1 15,-1 12,0 Z" /><path d="M 6,52 C 4,58 6,70 14,70 C 22,70 28,58 26,52 C 24,48 8,48 6,52 Z" /></svg>
-        <svg class="footprint-svg fp-14" viewBox="0 0 36 72"><path d="M 12,0 C 2,4 0,16 2,26 C 4,36 8,44 18,44 C 28,44 32,36 34,26 C 36,16 34,4 24,0 C 18,-1 15,-1 12,0 Z" /><path d="M 6,52 C 4,58 6,70 14,70 C 22,70 28,58 26,52 C 24,48 8,48 6,52 Z" /></svg>
-        <svg class="footprint-svg fp-15" viewBox="0 0 36 72"><path d="M 12,0 C 2,4 0,16 2,26 C 4,36 8,44 18,44 C 28,44 32,36 34,26 C 36,16 34,4 24,0 C 18,-1 15,-1 12,0 Z" /><path d="M 6,52 C 4,58 6,70 14,70 C 22,70 28,58 26,52 C 24,48 8,48 6,52 Z" /></svg>
-        <svg class="footprint-svg fp-16" viewBox="0 0 36 72"><path d="M 12,0 C 2,4 0,16 2,26 C 4,36 8,44 18,44 C 28,44 32,36 34,26 C 36,16 34,4 24,0 C 18,-1 15,-1 12,0 Z" /><path d="M 6,52 C 4,58 6,70 14,70 C 22,70 28,58 26,52 C 24,48 8,48 6,52 Z" /></svg>
-        <svg class="footprint-svg fp-17" viewBox="0 0 36 72"><path d="M 12,0 C 2,4 0,16 2,26 C 4,36 8,44 18,44 C 28,44 32,36 34,26 C 36,16 34,4 24,0 C 18,-1 15,-1 12,0 Z" /><path d="M 6,52 C 4,58 6,70 14,70 C 22,70 28,58 26,52 C 24,48 8,48 6,52 Z" /></svg>
-        <svg class="footprint-svg fp-18" viewBox="0 0 36 72"><path d="M 12,0 C 2,4 0,16 2,26 C 4,36 8,44 18,44 C 28,44 32,36 34,26 C 36,16 34,4 24,0 C 18,-1 15,-1 12,0 Z" /><path d="M 6,52 C 4,58 6,70 14,70 C 22,70 28,58 26,52 C 24,48 8,48 6,52 Z" /></svg>
-        <svg class="footprint-svg fp-19" viewBox="0 0 36 72"><path d="M 12,0 C 2,4 0,16 2,26 C 4,36 8,44 18,44 C 28,44 32,36 34,26 C 36,16 34,4 24,0 C 18,-1 15,-1 12,0 Z" /><path d="M 6,52 C 4,58 6,70 14,70 C 22,70 28,58 26,52 C 24,48 8,48 6,52 Z" /></svg>
-        <svg class="footprint-svg fp-20" viewBox="0 0 36 72"><path d="M 12,0 C 2,4 0,16 2,26 C 4,36 8,44 18,44 C 28,44 32,36 34,26 C 36,16 34,4 24,0 C 18,-1 15,-1 12,0 Z" /><path d="M 6,52 C 4,58 6,70 14,70 C 22,70 28,58 26,52 C 24,48 8,48 6,52 Z" /></svg>
+        <svg class="footprint-svg fp-1" viewBox="0 0 90 180">
+            <ellipse cx="25" cy="28" rx="10" ry="14" transform="rotate(-15 25 28)"/><ellipse cx="46" cy="20" rx="7" ry="10" transform="rotate(-5 46 20)"/><ellipse cx="63" cy="24" rx="6" ry="8" transform="rotate(5 63 24)"/><ellipse cx="76" cy="34" rx="5" ry="7" transform="rotate(15 76 34)"/><ellipse cx="84" cy="46" rx="4" ry="6" transform="rotate(25 84 46)"/>
+            <path d="M 25,54 C 15,64 15,84 25,94 C 40,109 40,134 30,154 C 25,169 40,184 55,179 C 70,174 80,144 75,124 C 70,104 85,74 70,54 C 55,34 35,39 25,54 Z"/>
+        </svg>
+        <svg class="footprint-svg fp-2" viewBox="0 0 90 180">
+            <ellipse cx="65" cy="28" rx="10" ry="14" transform="rotate(15 65 28)"/><ellipse cx="44" cy="20" rx="7" ry="10" transform="rotate(5 44 20)"/><ellipse cx="27" cy="24" rx="6" ry="8" transform="rotate(-5 27 24)"/><ellipse cx="14" cy="34" rx="5" ry="7" transform="rotate(-15 14 34)"/><ellipse cx="6" cy="46" rx="4" ry="6" transform="rotate(-25 6 46)"/>
+            <path d="M 65,54 C 75,64 75,84 65,94 C 50,109 50,134 60,154 C 65,169 50,184 35,179 C 20,174 10,144 15,124 C 20,104 5,74 20,54 C 35,34 55,39 65,54 Z"/>
+        </svg>
+        <svg class="footprint-svg fp-3" viewBox="0 0 90 180">
+            <ellipse cx="25" cy="28" rx="10" ry="14" transform="rotate(-15 25 28)"/><ellipse cx="46" cy="20" rx="7" ry="10" transform="rotate(-5 46 20)"/><ellipse cx="63" cy="24" rx="6" ry="8" transform="rotate(5 63 24)"/><ellipse cx="76" cy="34" rx="5" ry="7" transform="rotate(15 76 34)"/><ellipse cx="84" cy="46" rx="4" ry="6" transform="rotate(25 84 46)"/>
+            <path d="M 25,54 C 15,64 15,84 25,94 C 40,109 40,134 30,154 C 25,169 40,184 55,179 C 70,174 80,144 75,124 C 70,104 85,74 70,54 C 55,34 35,39 25,54 Z"/>
+        </svg>
+        <svg class="footprint-svg fp-4" viewBox="0 0 90 180">
+            <ellipse cx="65" cy="28" rx="10" ry="14" transform="rotate(15 65 28)"/><ellipse cx="44" cy="20" rx="7" ry="10" transform="rotate(5 44 20)"/><ellipse cx="27" cy="24" rx="6" ry="8" transform="rotate(-5 27 24)"/><ellipse cx="14" cy="34" rx="5" ry="7" transform="rotate(-15 14 34)"/><ellipse cx="6" cy="46" rx="4" ry="6" transform="rotate(-25 6 46)"/>
+            <path d="M 65,54 C 75,64 75,84 65,94 C 50,109 50,134 60,154 C 65,169 50,184 35,179 C 20,174 10,144 15,124 C 20,104 5,74 20,54 C 35,34 55,39 65,54 Z"/>
+        </svg>
+        <svg class="footprint-svg fp-5" viewBox="0 0 90 180">
+            <ellipse cx="25" cy="28" rx="10" ry="14" transform="rotate(-15 25 28)"/><ellipse cx="46" cy="20" rx="7" ry="10" transform="rotate(-5 46 20)"/><ellipse cx="63" cy="24" rx="6" ry="8" transform="rotate(5 63 24)"/><ellipse cx="76" cy="34" rx="5" ry="7" transform="rotate(15 76 34)"/><ellipse cx="84" cy="46" rx="4" ry="6" transform="rotate(25 84 46)"/>
+            <path d="M 25,54 C 15,64 15,84 25,94 C 40,109 40,134 30,154 C 25,169 40,184 55,179 C 70,174 80,144 75,124 C 70,104 85,74 70,54 C 55,34 35,39 25,54 Z"/>
+        </svg>
+        <svg class="footprint-svg fp-6" viewBox="0 0 90 180">
+            <ellipse cx="65" cy="28" rx="10" ry="14" transform="rotate(15 65 28)"/><ellipse cx="44" cy="20" rx="7" ry="10" transform="rotate(5 44 20)"/><ellipse cx="27" cy="24" rx="6" ry="8" transform="rotate(-5 27 24)"/><ellipse cx="14" cy="34" rx="5" ry="7" transform="rotate(-15 14 34)"/><ellipse cx="6" cy="46" rx="4" ry="6" transform="rotate(-25 6 46)"/>
+            <path d="M 65,54 C 75,64 75,84 65,94 C 50,109 50,134 60,154 C 65,169 50,184 35,179 C 20,174 10,144 15,124 C 20,104 5,74 20,54 C 35,34 55,39 65,54 Z"/>
+        </svg>
+        <svg class="footprint-svg fp-7" viewBox="0 0 90 180">
+            <ellipse cx="25" cy="28" rx="10" ry="14" transform="rotate(-15 25 28)"/><ellipse cx="46" cy="20" rx="7" ry="10" transform="rotate(-5 46 20)"/><ellipse cx="63" cy="24" rx="6" ry="8" transform="rotate(5 63 24)"/><ellipse cx="76" cy="34" rx="5" ry="7" transform="rotate(15 76 34)"/><ellipse cx="84" cy="46" rx="4" ry="6" transform="rotate(25 84 46)"/>
+            <path d="M 25,54 C 15,64 15,84 25,94 C 40,109 40,134 30,154 C 25,169 40,184 55,179 C 70,174 80,144 75,124 C 70,104 85,74 70,54 C 55,34 35,39 25,54 Z"/>
+        </svg>
+        <svg class="footprint-svg fp-8" viewBox="0 0 90 180">
+            <ellipse cx="65" cy="28" rx="10" ry="14" transform="rotate(15 65 28)"/><ellipse cx="44" cy="20" rx="7" ry="10" transform="rotate(5 44 20)"/><ellipse cx="27" cy="24" rx="6" ry="8" transform="rotate(-5 27 24)"/><ellipse cx="14" cy="34" rx="5" ry="7" transform="rotate(-15 14 34)"/><ellipse cx="6" cy="46" rx="4" ry="6" transform="rotate(-25 6 46)"/>
+            <path d="M 65,54 C 75,64 75,84 65,94 C 50,109 50,134 60,154 C 65,169 50,184 35,179 C 20,174 10,144 15,124 C 20,104 5,74 20,54 C 35,34 55,39 65,54 Z"/>
+        </svg>
+        <svg class="footprint-svg fp-9" viewBox="0 0 90 180">
+            <ellipse cx="25" cy="28" rx="10" ry="14" transform="rotate(-15 25 28)"/><ellipse cx="46" cy="20" rx="7" ry="10" transform="rotate(-5 46 20)"/><ellipse cx="63" cy="24" rx="6" ry="8" transform="rotate(5 63 24)"/><ellipse cx="76" cy="34" rx="5" ry="7" transform="rotate(15 76 34)"/><ellipse cx="84" cy="46" rx="4" ry="6" transform="rotate(25 84 46)"/>
+            <path d="M 25,54 C 15,64 15,84 25,94 C 40,109 40,134 30,154 C 25,169 40,184 55,179 C 70,174 80,144 75,124 C 70,104 85,74 70,54 C 55,34 35,39 25,54 Z"/>
+        </svg>
+        <svg class="footprint-svg fp-10" viewBox="0 0 90 180">
+            <ellipse cx="65" cy="28" rx="10" ry="14" transform="rotate(15 65 28)"/><ellipse cx="44" cy="20" rx="7" ry="10" transform="rotate(5 44 20)"/><ellipse cx="27" cy="24" rx="6" ry="8" transform="rotate(-5 27 24)"/><ellipse cx="14" cy="34" rx="5" ry="7" transform="rotate(-15 14 34)"/><ellipse cx="6" cy="46" rx="4" ry="6" transform="rotate(-25 6 46)"/>
+            <path d="M 65,54 C 75,64 75,84 65,94 C 50,109 50,134 60,154 C 65,169 50,184 35,179 C 20,174 10,144 15,124 C 20,104 5,74 20,54 C 35,34 55,39 65,54 Z"/>
+        </svg>
+        <svg class="footprint-svg fp-11" viewBox="0 0 90 180">
+            <ellipse cx="25" cy="28" rx="10" ry="14" transform="rotate(-15 25 28)"/><ellipse cx="46" cy="20" rx="7" ry="10" transform="rotate(-5 46 20)"/><ellipse cx="63" cy="24" rx="6" ry="8" transform="rotate(5 63 24)"/><ellipse cx="76" cy="34" rx="5" ry="7" transform="rotate(15 76 34)"/><ellipse cx="84" cy="46" rx="4" ry="6" transform="rotate(25 84 46)"/>
+            <path d="M 25,54 C 15,64 15,84 25,94 C 40,109 40,134 30,154 C 25,169 40,184 55,179 C 70,174 80,144 75,124 C 70,104 85,74 70,54 C 55,34 35,39 25,54 Z"/>
+        </svg>
+        <svg class="footprint-svg fp-12" viewBox="0 0 90 180">
+            <ellipse cx="65" cy="28" rx="10" ry="14" transform="rotate(15 65 28)"/><ellipse cx="44" cy="20" rx="7" ry="10" transform="rotate(5 44 20)"/><ellipse cx="27" cy="24" rx="6" ry="8" transform="rotate(-5 27 24)"/><ellipse cx="14" cy="34" rx="5" ry="7" transform="rotate(-15 14 34)"/><ellipse cx="6" cy="46" rx="4" ry="6" transform="rotate(-25 6 46)"/>
+            <path d="M 65,54 C 75,64 75,84 65,94 C 50,109 50,134 60,154 C 65,169 50,184 35,179 C 20,174 10,144 15,124 C 20,104 5,74 20,54 C 35,34 55,39 65,54 Z"/>
+        </svg>
+        <svg class="footprint-svg fp-13" viewBox="0 0 90 180">
+            <ellipse cx="25" cy="28" rx="10" ry="14" transform="rotate(-15 25 28)"/><ellipse cx="46" cy="20" rx="7" ry="10" transform="rotate(-5 46 20)"/><ellipse cx="63" cy="24" rx="6" ry="8" transform="rotate(5 63 24)"/><ellipse cx="76" cy="34" rx="5" ry="7" transform="rotate(15 76 34)"/><ellipse cx="84" cy="46" rx="4" ry="6" transform="rotate(25 84 46)"/>
+            <path d="M 25,54 C 15,64 15,84 25,94 C 40,109 40,134 30,154 C 25,169 40,184 55,179 C 70,174 80,144 75,124 C 70,104 85,74 70,54 C 55,34 35,39 25,54 Z"/>
+        </svg>
+        <svg class="footprint-svg fp-14" viewBox="0 0 90 180">
+            <ellipse cx="65" cy="28" rx="10" ry="14" transform="rotate(15 65 28)"/><ellipse cx="44" cy="20" rx="7" ry="10" transform="rotate(5 44 20)"/><ellipse cx="27" cy="24" rx="6" ry="8" transform="rotate(-5 27 24)"/><ellipse cx="14" cy="34" rx="5" ry="7" transform="rotate(-15 14 34)"/><ellipse cx="6" cy="46" rx="4" ry="6" transform="rotate(-25 6 46)"/>
+            <path d="M 65,54 C 75,64 75,84 65,94 C 50,109 50,134 60,154 C 65,169 50,184 35,179 C 20,174 10,144 15,124 C 20,104 5,74 20,54 C 35,34 55,39 65,54 Z"/>
+        </svg>
+        <svg class="footprint-svg fp-15" viewBox="0 0 90 180">
+            <ellipse cx="25" cy="28" rx="10" ry="14" transform="rotate(-15 25 28)"/><ellipse cx="46" cy="20" rx="7" ry="10" transform="rotate(-5 46 20)"/><ellipse cx="63" cy="24" rx="6" ry="8" transform="rotate(5 63 24)"/><ellipse cx="76" cy="34" rx="5" ry="7" transform="rotate(15 76 34)"/><ellipse cx="84" cy="46" rx="4" ry="6" transform="rotate(25 84 46)"/>
+            <path d="M 25,54 C 15,64 15,84 25,94 C 40,109 40,134 30,154 C 25,169 40,184 55,179 C 70,174 80,144 75,124 C 70,104 85,74 70,54 C 55,34 35,39 25,54 Z"/>
+        </svg>
+        <svg class="footprint-svg fp-16" viewBox="0 0 90 180">
+            <ellipse cx="65" cy="28" rx="10" ry="14" transform="rotate(15 65 28)"/><ellipse cx="44" cy="20" rx="7" ry="10" transform="rotate(5 44 20)"/><ellipse cx="27" cy="24" rx="6" ry="8" transform="rotate(-5 27 24)"/><ellipse cx="14" cy="34" rx="5" ry="7" transform="rotate(-15 14 34)"/><ellipse cx="6" cy="46" rx="4" ry="6" transform="rotate(-25 6 46)"/>
+            <path d="M 65,54 C 75,64 75,84 65,94 C 50,109 50,134 60,154 C 65,169 50,184 35,179 C 20,174 10,144 15,124 C 20,104 5,74 20,54 C 35,34 55,39 65,54 Z"/>
+        </svg>
+        <svg class="footprint-svg fp-17" viewBox="0 0 90 180">
+            <ellipse cx="25" cy="28" rx="10" ry="14" transform="rotate(-15 25 28)"/><ellipse cx="46" cy="20" rx="7" ry="10" transform="rotate(-5 46 20)"/><ellipse cx="63" cy="24" rx="6" ry="8" transform="rotate(5 63 24)"/><ellipse cx="76" cy="34" rx="5" ry="7" transform="rotate(15 76 34)"/><ellipse cx="84" cy="46" rx="4" ry="6" transform="rotate(25 84 46)"/>
+            <path d="M 25,54 C 15,64 15,84 25,94 C 40,109 40,134 30,154 C 25,169 40,184 55,179 C 70,174 80,144 75,124 C 70,104 85,74 70,54 C 55,34 35,39 25,54 Z"/>
+        </svg>
+        <svg class="footprint-svg fp-18" viewBox="0 0 90 180">
+            <ellipse cx="65" cy="28" rx="10" ry="14" transform="rotate(15 65 28)"/><ellipse cx="44" cy="20" rx="7" ry="10" transform="rotate(5 44 20)"/><ellipse cx="27" cy="24" rx="6" ry="8" transform="rotate(-5 27 24)"/><ellipse cx="14" cy="34" rx="5" ry="7" transform="rotate(-15 14 34)"/><ellipse cx="6" cy="46" rx="4" ry="6" transform="rotate(-25 6 46)"/>
+            <path d="M 65,54 C 75,64 75,84 65,94 C 50,109 50,134 60,154 C 65,169 50,184 35,179 C 20,174 10,144 15,124 C 20,104 5,74 20,54 C 35,34 55,39 65,54 Z"/>
+        </svg>
+        <svg class="footprint-svg fp-19" viewBox="0 0 90 180">
+            <ellipse cx="25" cy="28" rx="10" ry="14" transform="rotate(-15 25 28)"/><ellipse cx="46" cy="20" rx="7" ry="10" transform="rotate(-5 46 20)"/><ellipse cx="63" cy="24" rx="6" ry="8" transform="rotate(5 63 24)"/><ellipse cx="76" cy="34" rx="5" ry="7" transform="rotate(15 76 34)"/><ellipse cx="84" cy="46" rx="4" ry="6" transform="rotate(25 84 46)"/>
+            <path d="M 25,54 C 15,64 15,84 25,94 C 40,109 40,134 30,154 C 25,169 40,184 55,179 C 70,174 80,144 75,124 C 70,104 85,74 70,54 C 55,34 35,39 25,54 Z"/>
+        </svg>
+        <svg class="footprint-svg fp-20" viewBox="0 0 90 180">
+            <ellipse cx="65" cy="28" rx="10" ry="14" transform="rotate(15 65 28)"/><ellipse cx="44" cy="20" rx="7" ry="10" transform="rotate(5 44 20)"/><ellipse cx="27" cy="24" rx="6" ry="8" transform="rotate(-5 27 24)"/><ellipse cx="14" cy="34" rx="5" ry="7" transform="rotate(-15 14 34)"/><ellipse cx="6" cy="46" rx="4" ry="6" transform="rotate(-25 6 46)"/>
+            <path d="M 65,54 C 75,64 75,84 65,94 C 50,109 50,134 60,154 C 65,169 50,184 35,179 C 20,174 10,144 15,124 C 20,104 5,74 20,54 C 35,34 55,39 65,54 Z"/>
+        </svg>
     </div>
 
     <section id="home" class="hero">
@@ -344,62 +401,76 @@
         </section>
     </div>
 
-    <script>
-        const observerOptions = {
-            root: null,
-            rootMargin: "0px 0px -10% 0px", 
-            threshold: 0.15 
-        };
+  <script>
+    const observerOptions = {
+        root: null,
+        rootMargin: "0px 0px -10% 0px", 
+        threshold: 0.15 
+    };
 
-        const footprintObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active-glow');
-                } else {
-                    entry.target.classList.remove('active-glow');
+    const footprintObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const target = entry.target;
+
+            if (entry.isIntersecting) {
+                target.classList.add('active-glow');
+
+                if (target.fadeTimeout) {
+                    clearTimeout(target.fadeTimeout);
                 }
-            });
-        }, observerOptions);
 
-        document.querySelectorAll('.footprint-svg').forEach(fp => {
-            footprintObserver.observe(fp);
-        });
-
-        window.addEventListener("scroll", function() {
-            const scrollPosition = window.scrollY;
-
-            const hero = document.querySelector('.hero');
-            let fadeOpacity = 1 - (scrollPosition / 450); 
-            if (fadeOpacity < 0) fadeOpacity = 0;
-            hero.style.opacity = fadeOpacity;
-
-            const sections = [
-                document.getElementById('home'),
-                document.getElementById('poster'),
-                document.getElementById('art')
-            ];
-            const navLinks = document.querySelectorAll('.nav-links a');
-
-            let currentSectionId = 'home';
-
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - window.innerHeight / 3;
-                if (scrollPosition >= sectionTop) {
-                    currentSectionId = section.getAttribute('id');
+                target.fadeTimeout = setTimeout(() => {
+                    target.classList.remove('active-glow');
+                }, 2000);
+                
+            } else {
+                target.classList.remove('active-glow');
+                if (target.fadeTimeout) {
+                    clearTimeout(target.fadeTimeout);
                 }
-            });
-
-            if (scrollPosition < 100) {
-                currentSectionId = 'home';
             }
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === '#' + currentSectionId) {
-                    link.classList.add('active');
-                }
-            });
         });
-    </script>
+    }, observerOptions);
+
+    document.querySelectorAll('.footprint-svg').forEach(fp => {
+        footprintObserver.observe(fp);
+    });
+
+    window.addEventListener("scroll", function() {
+        const scrollPosition = window.scrollY;
+
+        const hero = document.querySelector('.hero');
+        let fadeOpacity = 1 - (scrollPosition / 450); 
+        if (fadeOpacity < 0) fadeOpacity = 0;
+        hero.style.opacity = fadeOpacity;
+
+        const sections = [
+            document.getElementById('home'),
+            document.getElementById('poster'),
+            document.getElementById('art')
+        ];
+        const navLinks = document.querySelectorAll('.nav-links a');
+
+        let currentSectionId = 'home';
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - window.innerHeight / 3;
+            if (scrollPosition >= sectionTop) {
+                currentSectionId = section.getAttribute('id');
+            }
+        });
+
+        if (scrollPosition < 100) {
+            currentSectionId = 'home';
+        }
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + currentSectionId) {
+                link.classList.add('active');
+            }
+        });
+    });
+</script>
 </body>
 </html>
