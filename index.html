@@ -163,6 +163,7 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 40px;
+            align-items: start;
         }
 
         /* 각진 모서리 & 일체형 배경 */
@@ -204,7 +205,23 @@
             line-height: 1.6;
         }
 
-        /* 발자국 컨테이너 세팅 (이미지 기반) */
+        /* 사진들이 찌그러지지 않고 일정한 크기로 예쁘게 들어가도록 처리 */
+        .card-img-container {
+             width: 100%;
+             height: 300px;
+             background-color: #EDF2F7;
+             border: 1px solid #E2E8F0;
+             overflow: hidden;
+        }
+
+        .card-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+            object-position: top; /* 제각각인 해상도 사진의 상단 위주 정렬 */
+        }
+
+        /* 발자국 컨테이너 세팅 */
         #footprint-trail {
             position: absolute;
             top: 0;
@@ -218,10 +235,9 @@
 
         .footprint-img {
             position: absolute;
-            width: 28px; /* 모바일 화면에 적당한 신발 크기 */
+            width: 80px; 
             height: auto;
             opacity: 0;
-            /* 테마 색상인 #52B774와 유사한 초록색 톤으로 이미지를 변경하는 CSS 필터 */
             filter: invert(64%) sepia(21%) saturate(995%) hue-rotate(88deg) brightness(92%) contrast(84%);
             transform: rotate(var(--heading));
             transition: opacity 0.8s ease;
@@ -229,36 +245,83 @@
         }
 
         .footprint-img.active-glow {
-            opacity: 0.4; /* 이미지가 선명히 보이도록 투명도 설정 */
+            opacity: 0.4; 
         }
         
-        /* [구간 1: 왼쪽으로 크게 구불] */
-        .fp-1  { top: 820px;  left: 32%; --heading: 25deg; } 
-        .fp-2  { top: 1000px; left: 30%; --heading: 25deg; } 
-        .fp-3  { top: 1200px; left: 25%; --heading: 5deg; }    
-        .fp-4  { top: 1390px; left: 28%; --heading: -10deg; }   
-        .fp-5  { top: 1570px; left: 27%; --heading: -25deg; } 
+        /* 발자국 방향 각도 세팅 */
+        .fp-1  { top: 820px;  left: 32%; --heading: 205deg; } 
+        .fp-2  { top: 1000px; left: 30%; --heading: 205deg; } 
+        .fp-3  { top: 1200px; left: 25%; --heading: 185deg; }    
+        .fp-4  { top: 1390px; left: 28%; --heading: 170deg; }   
+        .fp-5  { top: 1570px; left: 27%; --heading: 155deg; } 
+        .fp-6  { top: 1680px; left: 35%; --heading: 145deg; } 
+        .fp-7  { top: 1880px; left: 40%; --heading: 140deg; } 
+        .fp-8  { top: 1980px; left: 50%; --heading: 148deg; } 
+        .fp-9  { top: 2150px; left: 52%; --heading: 150deg; }   
+        .fp-10 { top: 2260px; left: 60%; --heading: 160deg; } 
+        .fp-11 { top: 2450px; left: 58%; --heading: 175deg; }    
+        .fp-12 { top: 2670px; left: 58%; --heading: 200deg; }  
+        .fp-13 { top: 2800px; left: 49%; --heading: 210deg; } 
+        .fp-14 { top: 3000px; left: 45%; --heading: 205deg; } 
+        .fp-15 { top: 3130px; left: 36%; --heading: 190deg; } 
+        .fp-16 { top: 3320px; left: 39%; --heading: 172deg; }   
+        .fp-17 { top: 3520px; left: 38%; --heading: 155deg; } 
+        .fp-18 { top: 3680px; left: 45.2%; --heading: 150deg; } 
+        .fp-19 { top: 3840px; left: 45%; --heading: 160deg; } 
+        .fp-20 { top: 4000px; left: 49%; --heading: 180deg; }
 
-        /* [구간 2: 오른쪽으로 작게 구불] */
-        .fp-6  { top: 1680px; left: 35%; --heading: -35deg; } 
-        .fp-7  { top: 1880px; left: 40%; --heading: -40deg; } 
-        .fp-8  { top: 1980px; left: 50%; --heading: -32deg; } 
+        /* 모달 전체화면 배경 설정 (오타 완벽 교정) */
+        .modal {
+            display: none; 
+            position: fixed;
+            z-index: 999999; 
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9); 
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
 
-        /* [구간 3: 우측으로 크게 구불] */
-        .fp-9  { top: 2150px; left: 52%; --heading: -30deg; }   
-        .fp-10 { top: 2260px; left: 60%; --heading: -20deg; } 
-        .fp-11 { top: 2450px; left: 58%; --heading:  -5deg; }    
-        .fp-12 { top: 2670px; left: 58%; --heading:  20deg; }  
-        .fp-13 { top: 2800px; left: 49%; --heading: 30deg; } 
+        /* 전체화면 이미지 설정 */
+        .modal-content {
+            max-width: 90%;
+            max-height: 72vh; 
+            margin-top: 60px; 
+            object-fit: contain; 
+            animation: zoomEffect 0.3s ease;
+        }
 
-        /* [구간 4: 마지막 좌측 큰 구불거림 후 정렬] */
-        .fp-14 { top: 3000px; left: 45%; --heading: 25deg; } 
-        .fp-15 { top: 3130px; left: 36%; --heading: 10deg; } 
-        .fp-16 { top: 3320px; left: 39%; --heading: -8deg; }   
-        .fp-17 { top: 3520px; left: 38%; --heading: -25deg; } 
-        .fp-18 { top: 3680px; left: 45.2%; --heading: -30deg; } 
-        .fp-19 { top: 3840px; left: 45%; --heading: -20deg; } 
-        .fp-20 { top: 4000px; left: 49%; --heading: 0deg; }
+        /* 돌아가기 버튼 스타일 */
+        .back-btn {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            background-color: var(--primary-green); 
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 30px; 
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: background-color 0.2s, transform 0.2s;
+            z-index: 1000000;
+        }
+
+        .back-btn:hover {
+            background-color: #3fa35e; 
+            transform: scale(1.05); 
+        }
+
+        /* 부드럽게 커지는 애니메이션 효과 */
+        @keyframes zoomEffect {
+            from { transform: scale(0.95); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
     </style>
 </head>
 <body>
@@ -273,26 +336,26 @@
     </nav>
 
     <div id="footprint-trail">
-        <img class="footprint-img fp-1" src="https://img.icons8.com/ios-filled/100/ffffff/left-shoe-print.png" alt="발자국">
-        <img class="footprint-img fp-2" src="https://img.icons8.com/ios-filled/100/ffffff/right-shoe-print.png" alt="발자국">
-        <img class="footprint-img fp-3" src="https://img.icons8.com/ios-filled/100/ffffff/left-shoe-print.png" alt="발자국">
-        <img class="footprint-img fp-4" src="https://img.icons8.com/ios-filled/100/ffffff/right-shoe-print.png" alt="발자국">
-        <img class="footprint-img fp-5" src="https://img.icons8.com/ios-filled/100/ffffff/left-shoe-print.png" alt="발자국">
-        <img class="footprint-img fp-6" src="https://img.icons8.com/ios-filled/100/ffffff/right-shoe-print.png" alt="발자국">
-        <img class="footprint-img fp-7" src="https://img.icons8.com/ios-filled/100/ffffff/left-shoe-print.png" alt="발자국">
-        <img class="footprint-img fp-8" src="https://img.icons8.com/ios-filled/100/ffffff/right-shoe-print.png" alt="발자국">
-        <img class="footprint-img fp-9" src="https://img.icons8.com/ios-filled/100/ffffff/left-shoe-print.png" alt="발자국">
-        <img class="footprint-img fp-10" src="https://img.icons8.com/ios-filled/100/ffffff/right-shoe-print.png" alt="발자국">
-        <img class="footprint-img fp-11" src="https://img.icons8.com/ios-filled/100/ffffff/left-shoe-print.png" alt="발자국">
-        <img class="footprint-img fp-12" src="https://img.icons8.com/ios-filled/100/ffffff/right-shoe-print.png" alt="발자국">
-        <img class="footprint-img fp-13" src="https://img.icons8.com/ios-filled/100/ffffff/left-shoe-print.png" alt="발자국">
-        <img class="footprint-img fp-14" src="https://img.icons8.com/ios-filled/100/ffffff/right-shoe-print.png" alt="발자국">
-        <img class="footprint-img fp-15" src="https://img.icons8.com/ios-filled/100/ffffff/left-shoe-print.png" alt="발자국">
-        <img class="footprint-img fp-16" src="https://img.icons8.com/ios-filled/100/ffffff/right-shoe-print.png" alt="발자국">
-        <img class="footprint-img fp-17" src="https://img.icons8.com/ios-filled/100/ffffff/left-shoe-print.png" alt="발자국">
-        <img class="footprint-img fp-18" src="https://img.icons8.com/ios-filled/100/ffffff/right-shoe-print.png" alt="발자국">
-        <img class="footprint-img fp-19" src="https://img.icons8.com/ios-filled/100/ffffff/left-shoe-print.png" alt="발자국">
-        <img class="footprint-img fp-20" src="https://img.icons8.com/ios-filled/100/ffffff/right-shoe-print.png" alt="발자국">
+        <img class="footprint-img fp-1" src="RightFootPrint.png" alt="발자국">
+        <img class="footprint-img fp-2" src="LeftFootPrint.png" alt="발자국">
+        <img class="footprint-img fp-3" src="RightFootPrint.png" alt="발자국">
+        <img class="footprint-img fp-4" src="LeftFootPrint.png" alt="발자국">
+        <img class="footprint-img fp-5" src="RightFootPrint.png" alt="발자국">
+        <img class="footprint-img fp-6" src="LeftFootPrint.png" alt="발자국">
+        <img class="footprint-img fp-7" src="RightFootPrint.png" alt="발자국">
+        <img class="footprint-img fp-8" src="LeftFootPrint.png" alt="발자국">
+        <img class="footprint-img fp-9" src="RightFootPrint.png" alt="발자국">
+        <img class="footprint-img fp-10" src="LeftFootPrint.png" alt="발자국">
+        <img class="footprint-img fp-11" src="RightFootPrint.png" alt="발자국">
+        <img class="footprint-img fp-12" src="LeftFootPrint.png" alt="발자국">
+        <img class="footprint-img fp-13" src="RightFootPrint.png" alt="발자국">
+        <img class="footprint-img fp-14" src="LeftFootPrint.png" alt="발자국">
+        <img class="footprint-img fp-15" src="RightFootPrint.png" alt="발자국">
+        <img class="footprint-img fp-16" src="LeftFootPrint.png" alt="발자국">
+        <img class="footprint-img fp-17" src="RightFootPrint.png" alt="발자국">
+        <img class="footprint-img fp-18" src="LeftFootPrint.png" alt="발자국">
+        <img class="footprint-img fp-19" src="RightFootPrint.png" alt="발자국">
+        <img class="footprint-img fp-20" src="LeftFootPrint.png" alt="발자국">
     </div>
 
     <section id="home" class="hero">
@@ -319,27 +382,34 @@
 
         <h2 id="art" class="section-title">Art</h2>
         <section class="grid-3" style="margin-bottom: 120px;">
-            <div class="card"><div class="card-img">이미지 1</div><div class="card-info"><p>학번, 이름<br>작품제목</p></div></div>
-            <div class="card"><div class="card-img">이미지 2</div><div class="card-info"><p>학번, 이름<br>작품제목</p></div></div>
-            <div class="card"><div class="card-img">이미지 3</div><div class="card-info"><p>학번, 이름<br>작품제목</p></div></div>
-            <div class="card"><div class="card-img">이미지 4</div><div class="card-info"><p>학번, 이름<br>작품제목</p></div></div>
-            <div class="card"><div class="card-img">이미지 5</div><div class="card-info"><p>학번, 이름<br>작품제목</p></div></div>
-            <div class="card"><div class="card-img">이미지 6</div><div class="card-info"><p>학번, 이름<br>작품제목</p></div></div>
-            <div class="card"><div class="card-img">이미지 7</div><div class="card-info"><p>학번, 이름<br>작품제목</p></div></div>
-            <div class="card"><div class="card-img">이미지 8</div><div class="card-info"><p>학번, 이름<br>작품제목</p></div></div>
-            <div class="card"><div class="card-img">이미지 9</div><div class="card-info"><p>학번, 이름<br>작품제목</p></div></div>
-            <div class="card"><div class="card-img">이미지 10</div><div class="card-info"><p>학번, 이름<br>작품제목</p></div></div>
-            <div class="card"><div class="card-img">이미지 11</div><div class="card-info"><p>학번, 이름<br>작품제목</p></div></div>
-            <div class="card"><div class="card-img">이미지 12</div><div class="card-info"><p>학번, 이름<br>작품제목</p></div></div>
-            <div class="card"><div class="card-img">이미지 13</div><div class="card-info"><p>학번, 이름<br>작품제목</p></div></div>
-            <div class="card"><div class="card-img">이미지 14</div><div class="card-info"><p>학번, 이름<br>작품제목</p></div></div>
-            <div class="card"><div class="card-img">이미지 15</div><div class="card-info"><p>학번, 이름<br>작품제목</p></div></div>
-            <div class="card"><div class="card-img">이미지 16</div><div class="card-info"><p>학번, 이름<br>작품제목</p></div></div>
-            <div class="card"><div class="card-img">이미지 17</div><div class="card-info"><p>학번, 이름<br>작품제목</p></div></div>
-            <div class="card"><div class="card-img">이미지 18</div><div class="card-info"><p>학번, 이름<br>작품제목</p></div></div>
-            <div class="card"><div class="card-img">이미지 19</div><div class="card-info"><p>학번, 이름<br>작품제목</p></div></div>
-            <div class="card"><div class="card-img">이미지 20</div><div class="card-info"><p>학번, 이름<br>작품제목</p></div></div>
+            <div class="card"><div class="card-img-container"><img src="art1.png" alt="작품 제목 1"></div><div class="card-info"><p>20117, 이아영<br>고래<p></div></div>
+            <div class="card"><div class="card-img-container"><img src="art2.png" alt="작품 제목 2"></div><div class="card-info"><p>20405, 김서윤<br>유행과 폐기의 현대 풍속화</p></div></div>
+            <div class="card"><div class="card-img-container"><img src="art3.png" alt="작품 제목 3"></div><div class="card-info"><p>20418, 임예율<br>고래</p></div></div>
+            <div class="card"><div class="card-img-container"><img src="art4.png" alt="작품 제목 4"></div><div class="card-info"><p>20427, 진소율<br>유행과 폐기의 현대 풍속화</p></div></div>
+            <div class="card"><div class="card-img-container"><img src="art5.png" alt="작품 제목 5"></div><div class="card-info"><p>20501, 김다인<br>고래배 5</p></div></div>
+            <div class="card"><div class="card-img-container"><img src="art6.png" alt="작품 제목 6"></div><div class="card-info"><p>20507, 김혜진<br>쓰레기로 병들어가는 바다와 고래의 외침</p></div></div>
+            <div class="card"><div class="card-img-container"><img src="art7.png" alt="작품 제목 7"></div><div class="card-info"><p>20510, 서은찬<br>매 순간 바라보다</p></div></div>
+            <div class="card"><div class="card-img-container"><img src="art8.png" alt="작품 제목 8"></div><div class="card-info"><p>20521, 이채현<br>당신의 식탁 속 바다는</p></div></div>
+            <div class="card"><div class="card-img-container"><img src="art9.jpg" alt="작품 제목 9"></div><div class="card-info"><p>20603, 고은서<br>푸른 기억,회색 현실</p></div></div>
+            <div class="card"><div class="card-img-container"><img src="art10.png" alt="작품 제목 10"></div><div class="card-info"><p>20618, 이서율<br>진주 귀걸이와 그물 머리띠를 한 소녀</p></div></div>
+            <div class="card"><div class="card-img-container"><img src="art11.png" alt="작품 제목 11"></div><div class="card-info"><p>20623, 정다혜<br>과소비의 흔적</p></div></div>
+            <div class="card"><div class="card-img-container"><img src="art12.png" alt="작품 제목 12"></div><div class="card-info"><p>20628, 한주연<br>여명 아래 감춰진 바다</p></div></div>
+            <div class="card"><div class="card-img-container"><img src="art13.png" alt="작품 제목 13"></div><div class="card-info"><p>20629, 한지민<br>쓰레기로 병들어가는 바다와 고래의 외침</p></div></div>
+            <div class="card"><div class="card-img-container"><img src="art14.png" alt="작품 제목 14"></div><div class="card-info"><p>20630, 황효은<br>여명 아래 감춰진 바다</p></div></div>
+            <div class="card"><div class="card-img-container"><img src="art15.png" alt="작품 제목 15"></div><div class="card-info"><p>20701, 강하은<br>오염된 해돋이</p></div></div>
+            <div class="card"><div class="card-img-container"><img src="art16.png" alt="작품 제목 16"></div><div class="card-info"><p>20702, 권가빈<br>조작된 안식처</p></div></div>
+            <div class="card"><div class="card-img-container"><img src="art17.png" alt="작품 제목 17"></div><div class="card-info"><p>20709, 김이건<br>누군가의 자화상</p></div></div>
+            <div class="card"><div class="card-img-container"><img src="art18.png" alt="작품 제목 18"></div><div class="card-info"><p>20726, 조성하<br>수련 연못과 불청객</p></div></div>
+            <div class="card"><div class="card-img-container"><img src="art19.jpg" alt="작품 제목 19"></div><div class="card-info"><p>21028, 최혜정<br>휴대폰 환경 전쟁</p></div></div>
+            <div class="card"><div class="card-img-container"><img src="art20.png" alt="작품 제목 20"></div><div class="card-info"><p>21108, 김하경<br>목초지의 비명</p></div></div>
+            <div class="card"><div class="card-img-container"><img src="art21.png" alt="작품 제목 21"></div><div class="card-info"><p>21116, 신시은<br>다시 돌아온 바다</p></div></div>
+            <div class="card"><div class="card-img-container"><img src="art22.jpeg" alt="작품 제목 22"></div><div class="card-info"><p>21123, 이청현<br>조작된 안식처:어둠 속에서 빛나는 현대의 폐허</p></div></div>
         </section>
+    </div>
+
+    <div id="imageModal" class="modal">
+        <button class="back-btn">← 돌아가기</button>
+        <img class="modal-content" id="modalImg">
     </div>
 
   <script>
@@ -373,11 +443,11 @@
         });
     }, observerOptions);
 
-    // 대상을 .footprint-img로 변경
     document.querySelectorAll('.footprint-img').forEach(fp => {
         footprintObserver.observe(fp);
     });
 
+    // 1. 스크롤 및 메뉴바 초록불 제어 기능 (안정적인 독립 격리)
     window.addEventListener("scroll", function() {
         const scrollPosition = window.scrollY;
 
@@ -396,9 +466,11 @@
         let currentSectionId = 'home';
 
         sections.forEach(section => {
-            const sectionTop = section.offsetTop - window.innerHeight / 3;
-            if (scrollPosition >= sectionTop) {
-                currentSectionId = section.getAttribute('id');
+            if (section) {
+                const sectionTop = section.offsetTop - window.innerHeight / 3;
+                if (scrollPosition >= sectionTop) {
+                    currentSectionId = section.getAttribute('id');
+                }
             }
         });
 
@@ -412,6 +484,22 @@
                 link.classList.add('active');
             }
         });
+    });
+
+    // 2. 모달 전체화면 기능 (스크롤 기능 바깥 영역으로 완전 분리)
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("modalImg");
+
+    document.querySelectorAll(".card-img-container img").forEach(img => {
+        img.style.cursor = "zoom-in";
+        img.addEventListener("click", function() {
+            modal.style.display = "flex"; 
+            modalImg.src = this.src;     
+        });
+    });
+
+    modal.addEventListener("click", function() {
+        modal.style.display = "none";
     });
 </script>
 </body>
